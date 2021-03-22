@@ -1,2 +1,2 @@
-# algorithmstudy
-No Pain No algorithm
+# Algorithm_study
+No Pain No Algorithm
