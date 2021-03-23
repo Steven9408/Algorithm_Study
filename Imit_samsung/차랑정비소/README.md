@@ -69,7 +69,7 @@ but ``한 담당자의 처리시간은 무조건 같다.``
 
 
 
-### 2. 풀기전 생각
+### 2. 풀이 전 생각
 
 - 모든 정보가 주어졌을 때, 시간 전진을 해야한다.
 - 시간 전진을 제한할 수 있는 조건은 모든 고객이 업무를 마쳤을때(고객이 남아있지 않을 때)
@@ -84,4 +84,183 @@ but ``한 담당자의 처리시간은 무조건 같다.``
 - 원하는 결과를 얻기 위해서는 다른 리스트 상에서 고객이 방문한 창구를 기입해야한다.
 
 
+
+### 3. 코드 풀이
+
+```python
+import sys
+sys.stdin = open("input.txt")
+
+T = int(input())
+
+for tc in range(1,T+1):
+    N,M,K,A,B = list(map(int,input().split()))
+
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    tk = list(map(int, input().split()))
+
+    # tk를 오름차순으로 정리
+    # for i in range(K):
+    #     min_v = tk[i]
+    #     min_index = i
+    #     for j in range(i,K):
+    #         if min_v > tk[j]:
+    #             min_v = tk[j]
+    #             min_index = j
+    #     tk[i],tk[min_index] = tk[min_index],tk[i]
+
+    # check_  = [고객번호,들어온시간]
+    check_N = [[-1,-1]] * N
+    check_M = [[-1,-1]] * M
+    use_A = []
+    use_B = []
+    queue_N = []
+    queue_M = []
+    t = 0
+    k = 0
+    end_k = 0
+
+    while end_k < K:
+        # 정비가 완료된 인원을 뺀다.
+        for i in range(M):
+            if check_M[i][0] != -1 and b[i] == t - check_M[i][1]:
+                if i == B-1:
+                    use_B += [check_M[i][0]]
+                check_M[i] = [-1, -1]
+                end_k += 1
+
+        # 접수가 완료된 인원을 뺀다. 그리고 queue_M에 넣는다
+        temp = []
+        for i in range(N):
+            if check_N[i][0] != -1 and a[i] == t - check_N[i][1]:
+                if i == A-1:
+                    use_A += [check_N[i][0]]
+                temp += [check_N[i][0]]
+                check_N[i] = [-1, -1]
+        # 실수
+        # if len(temp)>1:
+        #     temp.sort()
+        #     queue_M += temp
+        # elif temp:
+        #     queue_M += temp
+        if temp:
+            queue_M += temp
+
+        # 정비 대기열을 정비 창구에 넣는다.
+        for i in range(M):
+            if check_M[i][0] == -1:
+                if len(queue_M) > 0:
+                    check_M[i] = [queue_M.pop(0), t]
+
+        # 도착 인원을 접수 대기열에 넣는다.
+        while k < K and tk[k] <= t:
+            queue_N += [k]
+            k += 1
+
+        # 접수 대기열을 접수 창구에 넣는다.
+        for i in range(N):
+            if check_N[i][0] == -1:
+                if len(queue_N) > 0:
+                    check_N[i] = [queue_N.pop(0), t]
+
+        t += 1
+    res = 0
+    for i in range(len(use_A)):
+        for j in range(len(use_B)):
+            if use_A[i] == use_B[j]:
+                res += use_A[i]+1
+    if res == 0:
+        res = -1
+    print('#{} {}'.format(tc,res))
+```
+
+- 데이터를 받아들인다.
+- 여기서 tk(고객 도착 시간)은 입력에서 오름차순으로 정리되어 있었다. 오름 차순 알고리즘은 필요가 없었다.
+- check_N(접수창구 처리중), check_M(수리창구 처리중)은 [[고객번호,시작시간],,,,,] 으로 구성했다.
+  - 원래는 시간에 시작시간이 아닌, 머문 시간으로 타임이 진행될 때 마다 1씩 더하려고 했지만, 그럴필요가 없었다.
+- queue_N(접수창구 대기열), queue_M(수리창구 대기열)
+- t(시간전진), k(프로세스를 시작하는 고객 카운트), end_k(모든 프로세스를 끝낸 고객 카운트)
+- 시간 전진은 while 문을 사용했으며, 모든 고객이 모든 프로세스를 끝냈을때, 반복문을 종료한다.
+  - 1) 정비창구에서 끝난 인원을 빼버린다. for문을 통해 정비 창구를 방문하여 고객이 있고,  현재시간-들어간시간이 해당 창구의 처리시간과 같으면 일이 끝났다고 인식힌다.
+    - 여기서 목표가 되는 정비 창구번호(B)라면 고객번호를 따로 저장한다.(use_B)
+    - 일이 끝났으면, check_M을 비어있게 만든다. 그리고 end_k를 카운트한다.
+  - 2) 접수창구에서 끝난 인원을 빼서 정비 대기열에 넣는다. 해당 로직은 1)과 똑같다.
+    - 여기서 목표가 되는 접수 창구번호(A)라면 고객번호를 따로 저장한다.(use_A)
+    - 여기서 temp라는 것을 정의했는데, 사실 문제를 잘 못 읽었다.
+    - `처음에는 접수를 동시에 끝난 고객이 있으면 고객 번호가 빠른 순서대로 처리하려고 했는데, 다시 문제를 읽어보니, 접수 창고 번호가 빠른 순서대로 우선순위를 부여하라고 나와있었다.`
+    - 때문에 for문을 통해서 1번 창구부터 방문한다면, queue_M에 순서대로 넣으면 된다.
+    - `여기서 주의할점은 temp가 아무 것도 없는데 queue 리스트에 넣으면 None 값이 계속 들어가게 된다.` 
+  - 3) 정비 대기열의 고객들을 차례대로 빈 정비 창구에 넣는다.
+  - 4) 도착 인원을 판단하여 접수 대기열에 넣는다.
+    - 도착인원은 몇명이 될지 모르니, while문을 사용했다.
+    - k가 K보다 작고 tk[k]가 현재 시간보다 작거나 같을 때, 접수 대기열에 넣는다.
+    - 대기열에 한 사람씩 들어갈 때, k에 1을 추가한다.
+  - 5) 접수 대기열을 접수 창구에 넣는다. 해당 로직은 3) 로직과 같다.
+  - 6) 마지막으로 시간을 전진시킨다.
+- 반복문이 끝나면 use_A와 use_B에 동시에 저장된 고객번호를 추출한다.
+  - `여기서 주의해야 할점은 고객 번호는 문제에서 1번부터 시작하므로, 동시에 저장된 고객번호를 발견하면 res에 더 하는 것과 동시에 1을 추가해준다.`
+  - 그리고 res=0이면(동시에 들어간게 없다), res = -1 로 만들어준다.(문제에서 제시)
+
+
+
+### 4. 코드 최적화
+
+```python
+ # 수정전
+    while end_k < K:
+        # 정비가 완료된 인원을 뺀다.
+        for i in range(M):
+            if check_M[i][0] != -1 and b[i] == t - check_M[i][1]:
+                if i == B-1:
+                    use_B += [check_M[i][0]]
+                check_M[i] = [-1, -1]
+                end_k += 1
+ .
+ .
+ .
+ .
+		 # 정비 대기열을 정비 창구에 넣는다.
+         for i in range(M):
+            if check_M[i][0] == -1:
+                if len(queue_M) > 0:
+                    check_M[i] = [queue_M.pop(0), t]
+```
+
+```python
+# 수정후
+    while end_k < K:
+        # 정비가 완료된 인원을 뺀다.
+        for i in range(M):
+            if check_M[i][0] != -1 and b[i] == t - check_M[i][1]:
+                check_M[i] = [-1, -1]
+ .
+ .
+ .
+ .
+ 		# 정비 대기열을 정비 창구에 넣는다.
+        for i in range(M):
+            if check_M[i][0] == -1:
+                if queue_M:
+                    check_M[i] = [queue_M.pop(0), t]
+                    if i == B - 1:
+                        use_B += [check_M[i][0]]
+                    end_k += 1
+```
+
+- 처음에는 모든 프로세서를 마치고 나서 목적 창구에 방문한 고객번호를 기입하고, end_k를 카운트 했다.
+- 하지만 프로세스 종료가 아니라 목적 창구 방문을 했을 때, end_k를 카운트 한다면, 최소한  정비 창구의 최소 작업 처리시간 만큼은 시간 전진을 안해도 된다.  
+- `단, 해당 방법은 시간 전진에 대한 제약조건이 없을때만 가능하다.`
+  - 만약 시간 전진 제약조건이 있다면, 정비 창구에서 처리를 끝내지 못하고 나오는 인원이 있을 수 있다.
+- 추가적으로 queue에 값이 있는지 없는지 판단하는 로직을 if len(queue):에서 if queue:로 바꿨다. 
+
+
+
+### 5. 정리
+
+- 시간 전진을 통해 프로세스 처리를 진행했다.
+- 방문 프로세스는 역순으로 비우고 넣어주는게 필요하다.
+- `문제를 잘 읽고 정리하자.`
+- `변수를 만드는데에 주저하지 말자. 대신에 이름을 최대한 직관적으로 만들자` 
+- `lst1 += lst2 는 항상 주의하며 사용하자.`
 
