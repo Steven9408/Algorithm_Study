@@ -3,19 +3,18 @@ def solution(n, costs):
         global check
         global res
         if idex >= N:
-            pass
             # 다 연결 되어 있는지 판별
             global check
             check = [0] * n
             find_route(0)
-            print(check)
-            # print(select)
 
             # 코스트 계산
             cnt = 0
-            for i in range(N):
-                if select[i] == 1:
-                   cnt += costs[i][2]
+            if sum(check) == len(check):
+                for i in range(N):
+                    if select[i] == 1:
+                     cnt += costs[i][2]
+                res += [cnt]
 
         else:
             select[idex] = 0
@@ -44,7 +43,7 @@ def solution(n, costs):
 
     con(0)
 
-    answer = 0
+    answer = min(res)
     return answer
 
 print(solution(4,[[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]]))
