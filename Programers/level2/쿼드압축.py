@@ -1,8 +1,4 @@
 
-
-
-
-
 def solution(arr):
     answer = []
     N = len(arr)
@@ -22,8 +18,12 @@ def solution(arr):
             # elif sum_v == N*N:
             #     res[1] += 1
             # else:
+
+
             res[1] += sum_v
             res[0] += N*N - sum_v
+
+
 
         else:
             for i in range(0, N, N//2):
