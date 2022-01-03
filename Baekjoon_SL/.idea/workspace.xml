@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e27b7ce3-9079-4564-b7a7-fa0fda69bc40" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Programers/Programers_Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Programers/Programers_Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Programers/temp/베스트앨범.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Programers/temp/입국심사.py" beforeDir="false" />
-    </list>
+    <list default="true" id="e27b7ce3-9079-4564-b7a7-fa0fda69bc40" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,19 +42,20 @@
     <session id="592100727">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1454" />
+          <entry key="py" value="1797" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1454" />
+          <entry key="Python" value="1797" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -76,10 +73,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/samsung/구슬탈출2.py">
+        <entry file="file://$PROJECT_DIR$/basic_study/DFS_BFS/1260/sol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+            <state relative-caret-position="608">
+              <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -106,14 +103,15 @@
         <option value="$PROJECT_DIR$/제곱근.py" />
         <option value="$PROJECT_DIR$/무한문자열.py" />
         <option value="$PROJECT_DIR$/samsung/구슬탈출2.py" />
+        <option value="$PROJECT_DIR$/basic_study/DFS_BFS/1260/sol.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="2631" />
+    <option name="y" value="116" />
     <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -131,7 +129,20 @@
             <path>
               <item name="Baekjoon_SL" type="b2602c69:ProjectViewProjectNode" />
               <item name="Baekjoon_SL" type="462c0819:PsiDirectoryNode" />
-              <item name="samsung" type="462c0819:PsiDirectoryNode" />
+              <item name="basic_study" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Baekjoon_SL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Baekjoon_SL" type="462c0819:PsiDirectoryNode" />
+              <item name="basic_study" type="462c0819:PsiDirectoryNode" />
+              <item name="DFS_BFS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Baekjoon_SL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Baekjoon_SL" type="462c0819:PsiDirectoryNode" />
+              <item name="basic_study" type="462c0819:PsiDirectoryNode" />
+              <item name="DFS_BFS" type="462c0819:PsiDirectoryNode" />
+              <item name="1260" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -155,7 +166,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.구슬탈출2">
+  <component name="RunManager" selected="Python.sol">
     <configuration name="동물원" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="baekjoon_SL" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -282,14 +293,37 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="sol" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="baekjoon_SL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/basic_study/DFS_BFS/1260" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basic_study/DFS_BFS/1260/sol.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.ATM" />
       <item itemvalue="Python.A_B" />
       <item itemvalue="Python.동물원" />
       <item itemvalue="Python.구슬탈출2" />
+      <item itemvalue="Python.sol" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.sol" />
         <item itemvalue="Python.구슬탈출2" />
         <item itemvalue="Python.ATM" />
         <item itemvalue="Python.동물원" />
@@ -311,14 +345,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12328767" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3257329" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3257024" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995657" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -389,7 +423,14 @@
     <entry file="file://$PROJECT_DIR$/samsung/구슬탈출2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
-          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basic_study/DFS_BFS/1260/sol.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
         </state>
       </provider>
     </entry>
