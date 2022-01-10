@@ -20,7 +20,7 @@
 
 M, N = map(int, input().split())
 arr = [1 for _ in range(N+1)]
-for i in range(2,N+1):
+for i in range(2,N//2+1):
     j = 1
     while i*j <= N:
         arr[i*j] += 1
