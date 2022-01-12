@@ -5,14 +5,14 @@ res = []
 res_r = []
 def dfs(check, l, n):
     global res
-    print(l)
-    if l == 7:
-      if n == 100:
-          res = list(check)
-          return True
+    if l == 9:
+        print(check, n)
+        if n == 100 and sum(check)==7:
+            res = list(check)
+            return True
     else:
-        if n + keys[l] <= 100:
-            if dfs(check+[1], l+1 , n + n + keys[l]):
+        if sum(check) + 1 <= 7:
+            if dfs(check+[1], l+1 , n + keys[l]):
                 return True
         if dfs(check+[0], l+1, n):
             return True
@@ -22,4 +22,6 @@ dfs([], 0, 0)
 for i in range(len(res)):
     if res[i] == 1:
         res_r.append(keys[i])
-print(sorted(res_r))
+res_r.sort()
+for num in res_r:
+    print(num)
