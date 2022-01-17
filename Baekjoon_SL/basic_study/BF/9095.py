@@ -1,21 +1,18 @@
 T = int(input())
 
-def dfs(l,v,c):
-    global res
-    if l == c+1:
-        if v == N:
-            res += 1
+def dp(n):
+    if n == 1:
+        return 1
+    elif n == 2:
+        return 2
+    elif n == 3:
+        return 4
     else:
-        for i in range(1,4):
-            dfs(l+1, v+i, c)
+        return dp(n-1) + dp(n-2) + dp(n-3)
+
 
 for tc in range(T):
     N = int(input())
-    res = 0
-    max_l = N
-
-    for c in range(0, max_l):
-        dfs(0, 0, c)
-    print(res)
+    print(dp(N))
 
 
