@@ -22,4 +22,4 @@ while l:
     if ele not in arr:
         temp.append(ele)
     else:
-        
+
