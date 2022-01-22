@@ -1,30 +1,41 @@
-from collections import deque
 N = int(input())
-times = []
-pays = []
+
+plane = []
 for i in range(N):
-    t, p = map(int,input().split())
-    times.append(t)
-    pays.append(p)
+    plane.append(list(map(int, input().split())))
 
-q = deque()
-# 현재날, 잔여일, 총페이
-q.append([1,0,0])
-q.append([1, times[0]-1, pays[0]])
 
-res = 0
-while q:
-    nd, rd, sp = q.popleft()
-    if nd == N:
-        if rd == 0 and res < sp:
-            res = sp
-        continue
-    elif rd != 0:
-        q.append([nd+1, rd-1, sp])
+
+def dfs(l,arr, a, b, cnt_a, cnt_b):
+    global res
+    if N == l:
+        print(arr)
+        print(a,b)
+        if res > abs(a-b):
+            res = abs(a-b)
     else:
-        # 일 추가하기
-        q.append([nd + 1, times[nd]-1, sp+pays[nd]])
-        # 일 하지않기
-        q.append([nd+1, 0, sp])
+        if cnt_a < N//2:
+            # a팀
+            temp = 0
+            for i in range(N):
+                if arr[i] == 1:
+                    temp += plane[l][i]
+                    temp += plane[i][l]
+            arr[l] = 1
+            dfs(l+1, list(arr), a+temp, b, cnt_a+1, cnt_b)
+            # arr[l] = 0
+        if cnt_b < N//2:
+            # b팀
+            temp = 0
+            for i in range(N):
+                if arr[i] == 2:
+                    temp += plane[l][i]
+                    temp += plane[i][l]
+            arr[l] = 2
+            dfs(l+1, list(arr), a, b+temp, cnt_a, cnt_b+1)
+            # arr[l] = 0
 
+c = [0 for _ in range(N)]
+res = 99999999999999999999999999999999
+dfs(0, c, 0, 0, 0, 0)
 print(res)
